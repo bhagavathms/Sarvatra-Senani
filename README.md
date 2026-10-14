@@ -190,18 +190,6 @@ Kafka producers can publish either a bare `Telemetry` JSON object or `{"thread_i
 
 Bands: **LOW** < 30 ≤ **MODERATE** < 55 ≤ **HIGH** < 75 ≤ **CRITICAL**. Weights are module constants in `agents.py`.
 
----
-
-## Resume bullets
-
-- Architected **Sarvatra Senani**, a multi-agent battlefield decision-support engine on **LangGraph**. Four specialized agents (ingestion, geospatial, risk, SITREP) run in a checkpointed state machine with failure routing and a revision loop.
-- Implemented a **human-in-the-loop checkpoint** using LangGraph `interrupt()` and `Command(resume=…)` with a **PostgreSQL checkpointer**. Paused workflows survive restarts and are resumed through a FastAPI review API with per-thread locking against double-resume.
-- Built a **PostGIS** geospatial agent (`ST_DWithin`, `ST_ClosestPoint`, `ST_Covers` on `geography`, GiST-indexed) with an equivalent in-memory haversine fallback and **H3** cell indexing, for proximity analysis against borders, infrastructure and friendly positions.
-- Designed an **explainable risk engine** whose severity score breaks down into per-factor contributions, with logistics estimates (QRF ETA, time to boundary) and rule-based recommended actions. LLMs are confined to narrative prose so signed-off figures remain auditable.
-- Integrated **OpenAI, Anthropic and Ollama** behind a single provider-agnostic gateway using **Pydantic v2 structured outputs**, with timeouts, prompt-injection fencing and automatic deterministic fallback.
-- Streamed agent execution to a **React + Tailwind** dark-mode command center over **WebSockets**, with an **Apache Kafka** ingestion and event bus (KRaft, Docker Compose). The dashboard includes an SVG tactical map, live pipeline tracker and operator sign-off console.
-
----
 
 ## Limitations and next steps
 
